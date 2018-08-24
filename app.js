@@ -9,13 +9,9 @@ module.exports = app => {
     config.state = config.state || Date.now();
     const strategy = new Strategy(config, (req, accessToken, refreshToken, params, profile, done) => {
         const user = {
-            userId: params.userId,
-            username: params.username,
-            nickname: params.nickname,
             accessToken,
             refreshToken,
-            params,
-            profile,
+            profile
         };
         app.passport.doVerify(req, user, done);
     });
