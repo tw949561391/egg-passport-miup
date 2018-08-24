@@ -10,5 +10,5 @@ exports.passport = {};
 exports.passportMiup = {
     key: '',
     secret: '',
-    scopes: []
+    scope: ''
 };
