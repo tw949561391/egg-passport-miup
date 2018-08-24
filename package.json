@@ -37,7 +37,8 @@
     "lint": "eslint .",
     "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
     "pkgfiles": "egg-bin pkgfiles",
-    "autod": "autod"
+    "autod": "autod",
+    "publish": "git commit *  -v -m publish && git push && npm publish"
   },
   "files": [
     "lib",
