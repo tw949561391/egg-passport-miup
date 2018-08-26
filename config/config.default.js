@@ -1,7 +1,5 @@
 'use strict';
 
-
-exports.passport = {};
 /**
  * egg-passportMiup default config
  * @member Config#passportMiup
@@ -10,5 +8,8 @@ exports.passport = {};
 exports.passportMiup = {
     key: '',
     secret: '',
+    authorizationURL: 'https://passport.miup.fun/api/authorize',
+    tokenURL: 'https://passport.miup.fun/api/token',
+    profileURL: 'https://passport.miup.fun/api/me',
     scope: ''
 };

@@ -8,12 +8,10 @@ module.exports = app => {
     config.clientSecret = config.secret;
     config.state = config.state || Date.now();
     const strategy = new Strategy(config, (req, accessToken, refreshToken, params, profile, done) => {
-        const user = {
-            accessToken,
-            refreshToken,
-            profile
-        };
-        app.passport.doVerify(req, user, done);
+        params.refreshToken = refreshToken;
+        params.accessToken = accessToken;
+        profile.token = params;
+        profile.app.passport.doVerify(req, profile, done);
     });
     app.passport.use('miup', strategy);
 };
