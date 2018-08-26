@@ -8,10 +8,20 @@ module.exports = app => {
     config.clientSecret = config.secret;
     config.state = config.state || Date.now();
     const strategy = new Strategy(config, (req, accessToken, refreshToken, params, profile, done) => {
-        params.refreshToken = refreshToken;
-        params.accessToken = accessToken;
+        params.refresh_token = refreshToken;
+        params.access_token = accessToken;
         profile.token = params;
-        profile.app.passport.doVerify(req, profile, done);
+        app.passport.doVerify(req, profile, (error, data) => {
+            try {
+                if (typeof(data) === 'string') {
+                    data = JSON.parse(data);
+                }
+                done(null, data);
+            } catch (e) {
+                done(e);
+            }
+
+        });
     });
     app.passport.use('miup', strategy);
 };
