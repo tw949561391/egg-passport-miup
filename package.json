@@ -4,6 +4,7 @@
   "description": "",
   "eggPlugin": {
     "name": "passportMiup",
+
     "dependencies": [
       "passport"
     ]
